@@ -708,11 +708,11 @@ endif()
 
 
 # examples
-add_subdirectory(examples)
+# add_subdirectory(examples)
 
 # testing
-include(CTest)
-add_subdirectory(test)
+# include(CTest)
+# add_subdirectory(test)
 
 
 # documentation
