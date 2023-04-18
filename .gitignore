@@ -5,3 +5,4 @@ examples/Makefile
 /Testing
 *~
 build-*
+Win32/strumpack/x64/*
