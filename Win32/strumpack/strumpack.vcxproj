@@ -166,6 +166,8 @@
     </Midl>
     <Lib>
       <AdditionalOptions>%(AdditionalOptions) /machine:X64</AdditionalOptions>
+      <AdditionalDependencies>strumpackF.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='CUDADebug|x64'">
@@ -197,6 +199,8 @@
     </Midl>
     <Lib>
       <AdditionalOptions>%(AdditionalOptions) /machine:X64</AdditionalOptions>
+      <AdditionalDependencies>strumpackF.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ParDebugGID64|x64'">
@@ -228,6 +232,8 @@
     </Midl>
     <Lib>
       <AdditionalOptions>%(AdditionalOptions) /machine:X64</AdditionalOptions>
+      <AdditionalDependencies>strumpackF.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ParRelease|x64'">
@@ -258,6 +264,8 @@
     </Midl>
     <Lib>
       <AdditionalOptions>%(AdditionalOptions) /machine:X64</AdditionalOptions>
+      <AdditionalDependencies>strumpackF.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ParReleaseWithDebugInfo|x64'">
@@ -288,6 +296,8 @@
     </Midl>
     <Lib>
       <AdditionalOptions>%(AdditionalOptions) /machine:X64</AdditionalOptions>
+      <AdditionalDependencies>strumpackF.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='CUDARelease|x64'">
@@ -318,6 +328,8 @@
     </Midl>
     <Lib>
       <AdditionalOptions>%(AdditionalOptions) /machine:X64</AdditionalOptions>
+      <AdditionalDependencies>strumpackF.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -331,6 +343,10 @@
       <FloatingPointModel>Strict</FloatingPointModel>
       <AssemblerListingLocation>Debug/</AssemblerListingLocation>
     </ClCompile>
+    <Lib>
+      <AdditionalDependencies>strumpackF.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir)</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -341,6 +357,10 @@
       <ExceptionHandling>Sync</ExceptionHandling>
       <AssemblerListingLocation>Release/</AssemblerListingLocation>
     </ClCompile>
+    <Lib>
+      <AdditionalDependencies>strumpackF.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir)</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\BLR\BLRExtendAdd.hpp" />
@@ -455,6 +475,36 @@
     <ClInclude Include="..\..\src\StrumpackSparseSolverMPIDist.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\scalapack\PBLAS\SRC\PTOOLS\PB_Ctop.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParDebugGID64|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParRelease|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='CUDARelease|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParReleaseWithDebugInfo|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='CUDADebug|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParDebug|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\..\scalapack\PBLAS\SRC\PTOOLS\PB_topget_.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParDebugGID64|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParRelease|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='CUDARelease|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParReleaseWithDebugInfo|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='CUDADebug|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParDebug|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\..\scalapack\PBLAS\SRC\PTOOLS\PB_topset_.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParDebugGID64|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParRelease|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='CUDARelease|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParReleaseWithDebugInfo|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='CUDADebug|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParDebug|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
     <ClCompile Include="..\..\src\BLR\BLRExtendAdd.cpp" />
     <ClCompile Include="..\..\src\BLR\BLRMatrix.cpp" />
     <ClCompile Include="..\..\src\BLR\BLRMatrixMPI.cpp" />
