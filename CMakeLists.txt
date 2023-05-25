@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.17)
-project(STRUMPACK VERSION 7.0.1 LANGUAGES CXX C Fortran)
+project(STRUMPACK VERSION 7.1.3 LANGUAGES CXX C Fortran)
 cmake_policy(SET CMP0074 NEW)
 
 option(STRUMPACK_USE_MPI     "Build with MPI support" ON)
 option(STRUMPACK_USE_OPENMP  "Use OpenMP for on-node threading tasking" ON)
-option(STRUMPACK_USE_CUDA    "Use CUDA for NVIDIA GPU acceleration" ON)
-option(STRUMPACK_USE_HIP     "Use HIP for AMD or NVIDIA GPU acceleration" ON)
+option(STRUMPACK_USE_CUDA    "Use CUDA for NVIDIA GPU acceleration" OFF)
+option(STRUMPACK_USE_HIP     "Use HIP for AMD or NVIDIA GPU acceleration" OFF)
 option(STRUMPACK_USE_SYCL    "Use SYCL/DPC++ for Intel GPU acceleration" OFF)
 option(STRUMPACK_USE_BLAS64  "Use 64 bit interfaces to BLAS and LAPACK, e.g., MKL ILP64 or openblas64" OFF)
 
@@ -74,6 +74,7 @@ endif()
 if(NOT (STRUMPACK_USE_CUDA OR STRUMPACK_USE_HIP))
   if(TPL_ENABLE_MAGMA)
     message(STATUS "Disabling MAGMA, it requires CUDA or HIP to be enabled.")
+    set(TPL_ENABLE_MAGMA OFF)
   endif()
 endif()
 
@@ -101,17 +102,8 @@ else()
 endif()
 
 if(STRUMPACK_USE_CUDA)
-  include(CheckLanguage)
-  check_language(CUDA)
-  if(CMAKE_CUDA_COMPILER)
-    enable_language(CUDA)
-    # will be in CMake 3.17? for now we have a copy in cmake/Modules
-    find_package(CUDAToolkit REQUIRED)
-  else()
-    message(WARNING "CUDA compiler not found,"
-      " proceeding without CUDA support.")
-    set(STRUMPACK_USE_CUDA OFF)
-  endif()
+  enable_language(CUDA)
+  find_package(CUDAToolkit REQUIRED)
 endif()
 
 if(STRUMPACK_USE_HIP)
@@ -127,8 +119,8 @@ if(STRUMPACK_USE_HIP)
       find_package(hipsparse REQUIRED)
       find_package(rocsolver REQUIRED)
       find_package(rocblas REQUIRED)
-      # find_package(rocthrust REQUIRED)
-      # find_package(rocprim REQUIRED)
+      find_package(rocprim REQUIRED)
+      find_package(rocthrust REQUIRED)
     else()
       message(WARNING "HIP compiler not found,"
         " proceeding without HIP support.")
@@ -528,11 +520,6 @@ if(TPL_ENABLE_COMBBLAS)
   endif()
 endif()
 
-
-# TODO PIC
-# TODO libatomic?
-
-
 if(STRUMPACK_USE_HIP)
   set_source_files_properties(
     src/sparse/fronts/FrontalMatrixHIP.hip.cpp
@@ -552,10 +539,26 @@ else()
   add_library(strumpack "")
 endif()
 
-
 # this is to fix a link issue for the fortran example when compiling
 # with clang
 set_property(TARGET strumpack PROPERTY POSITION_INDEPENDENT_CODE ON)
+
+
+# see https://github.com/pghysels/STRUMPACK/issues/82
+# TODO check if 32bit, check compiler??
+set(ATOMIC_TEST_SOURCE "#include <atomic>
+      int main() { std::atomic<int64_t> i(0); i++; return 0; }")
+check_cxx_source_compiles("${ATOMIC_TEST_SOURCE}" ATOMIC_INT64_IS_BUILTIN)
+if(NOT ATOMIC_INT64_IS_BUILTIN)
+  set(CMAKE_REQUIRED_LIBRARIES atomic)
+  check_cxx_source_compiles(
+    "${ATOMIC_TEST_SOURCE}" ATOMIC_INT64_REQUIRES_LIBATOMIC)
+  if (ATOMIC_INT64_REQUIRES_LIBATOMIC)
+    target_link_libraries(strumpack PRIVATE atomic)
+  endif()
+  unset(CMAKE_REQUIRED_LIBRARIES)
+endif()
+
 
 add_subdirectory(src)
 
@@ -586,7 +589,8 @@ endif()
 
 if(STRUMPACK_USE_MPI)
   target_link_libraries(strumpack PUBLIC
-    MPI::MPI_CXX MPI::MPI_C MPI::MPI_Fortran)
+    MPI::MPI_CXX MPI::MPI_C ${MPI_Fortran_LIBRARIES})
+  ## adding the MPI::MPI_Fortran target risks adding unwanted compile flags
 endif()
 
 if(OpenMP_FOUND)
@@ -599,7 +603,9 @@ if(OpenMP_FOUND)
   # if(OpenMP_Fortran_FOUND)
   #   target_link_libraries(strumpack PRIVATE OpenMP::OpenMP_Fortran)
   # endif()
-else()
+endif()
+
+if(NOT STRUMPACK_USE_OPENMP)
   include(CheckCXXCompilerFlag)
   check_cxx_compiler_flag(-Wno-unknown-pragmas
     COMPILER_SUPPORTS_NOPRAGMA_WARNING)
@@ -654,11 +660,7 @@ if(ButterflyPACK_FOUND)
     ButterflyPACK::sbutterflypack
     ButterflyPACK::dbutterflypack
     ButterflyPACK::cbutterflypack
-    ButterflyPACK::zbutterflypack
-    MPI::MPI_Fortran ${MPI_Fortran_LIBRARIES})
-  ## for some reason just adding the MPI::MPI_Fortran target only
-  ## links with the f08 module, not with the regular fortran MPI
-  ## library
+    ButterflyPACK::zbutterflypack)
 endif()
 
 if(slate_FOUND)
@@ -675,30 +677,8 @@ if(MAGMA_FOUND)
 endif()
 
 if(hipblas_FOUND)
-  target_link_libraries(strumpack PUBLIC roc::hipblas roc::rocblas roc::rocsolver roc::hipsparse)
-  # target_link_libraries(strumpack PUBLIC roc::rocprim) # roc::rocprim_hip)
-  # target_link_libraries(strumpack PUBLIC roc::rocthrust)
-  # if(STRUMPACK_HIP_PLATFORM_HCC)
-  #   # target_compile_definitions(strumpack PUBLIC __HIP_PLATFORM_HCC__)
-  #   if(STRUMPACK_HIP_AMDGPU)
-  #     foreach(target ${STRUMPACK_HIP_AMDGPU})
-  #       target_compile_options(strumpack PRIVATE $<$<COMPILE_LANGUAGE:CXX>:--amdgpu-target=${target}>)
-  #       target_link_libraries(strumpack PRIVATE --amdgpu-target=${target})
-  #     endforeach()
-  #   # endif()
-  #   # if(DEFINED STRUMPACK_HIP_AMDGPU)
-  #   #   target_compile_options(strumpack PRIVATE
-  #   #   $<$<COMPILE_LANGUAGE:CXX>:${STRUMPACK_HIP_AMDGPU}>)
-  #   else()
-  #     target_compile_options(strumpack PRIVATE
-  #     $<$<COMPILE_LANGUAGE:CXX>:--amdgpu-target=none>)
-  #     message(WARNING "No AMD GPU architecture was specified,"
-  #       " specify -DSTRUMPACK_HIP_AMDGPU=\"xxx\" "
-  #       " where xxx can be for instance gfx906 (or a comma separated list)")
-  #   endif()
-  # elseif(STRUMPACK_HIP_PLATFORM_NVCC)
-  #   # target_compile_definitions(strumpack PUBLIC __HIP_PLATFORM_NVCC__)
-  # endif()
+  target_link_libraries(strumpack PUBLIC
+    roc::hipblas roc::rocblas roc::rocsolver roc::hipsparse roc::rocthrust)
 endif()
 
 if(CombBLAS_FOUND)

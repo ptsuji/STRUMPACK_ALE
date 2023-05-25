@@ -76,25 +76,15 @@ namespace strumpack {
 #else
       std::cout << "# running serially, no OpenMP support!" << std::endl;
 #endif
-      // a heuristic to set the recursion task cutoff level based on
-      // the number of threads
-      if (params::num_threads == 1)
-        params::task_recursion_cutoff_level = 0;
-      else {
-        params::task_recursion_cutoff_level =
-          std::log2(params::num_threads) + 3;
-        std::cout << "# number of tasking levels = "
-                  << params::task_recursion_cutoff_level
-                  << " = log_2(#threads) + 3"<< std::endl;
-      }
     }
-#if defined(STRUMPACK_COUNT_FLOPS)
-    // if (!params::flops.is_lock_free())
-    //   std::cerr << "# WARNING: the flop counter is not lock free"
-    //             << std::endl;
-#endif
+    // a heuristic to set the recursion task cutoff level based on
+    // the number of threads
+    if (params::num_threads == 1)
+      params::task_recursion_cutoff_level = 0;
+    else
+      params::task_recursion_cutoff_level =
+        std::log2(params::num_threads) + 3;
     opts_.HSS_options().set_synchronized_compression(true);
-
 #if defined(STRUMPACK_USE_CUDA) || defined(STRUMPACK_USE_HIP)
     if (opts_.use_gpu()) gpu::init();
 #endif
@@ -106,18 +96,6 @@ namespace strumpack {
   template<typename scalar_t,typename integer_t>
   SparseSolverBase<scalar_t,integer_t>::~SparseSolverBase() {
     std::set_new_handler(old_handler_);
-  }
-
-  template<typename scalar_t,typename integer_t> void
-  SparseSolverBase<scalar_t,integer_t>::move_to_gpu() {
-    TaskTimer t("move_to_gpu", [&](){ tree()->move_to_gpu(); });
-    if (opts_.verbose() && is_root_)
-      std::cout << "#   - move_to_gpu time = " << t.elapsed()
-                << std::endl;
-  }
-  template<typename scalar_t,typename integer_t> void
-  SparseSolverBase<scalar_t,integer_t>::remove_from_gpu() {
-    tree()->remove_from_gpu();
   }
 
   template<typename scalar_t,typename integer_t> SPOptions<scalar_t>&
@@ -330,10 +308,10 @@ namespace strumpack {
     if (reordered_) return ReturnCode::SUCCESS;
     TaskTimer t1("permute-scale");
     int ierr;
+    if (opts_.verbose() && is_root_)
+      std::cout << "# matching job: " << get_description(opts_.matching())
+                << std::endl;
     if (opts_.matching() != MatchingJob::NONE) {
-      if (opts_.verbose() && is_root_)
-        std::cout << "# matching job: " << get_description(opts_.matching())
-                  << std::endl;
       try {
         t1.time([&](){ matching_ = matrix()->matching(opts_.matching()); });
       } catch (std::exception& e) {
@@ -567,12 +545,6 @@ namespace strumpack {
       ReturnCode ierr = reorder();
       if (ierr != ReturnCode::SUCCESS) return ierr;
     }
-// #if defined(STRUMPACK_USE_CUDA) || defined(STRUMPACK_USE_HIP)
-//     if (opts_.use_gpu()) gpu::init();
-// #endif
-// #if defined(STRUMPACK_USE_SYCL)
-//     if (opts_.use_gpu()) dpcpp::init();
-// #endif
     float dfnnz = 0.;
     if (opts_.verbose()) {
       dfnnz = dense_factor_nonzeros();
