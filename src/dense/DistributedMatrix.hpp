@@ -687,14 +687,22 @@ namespace strumpack {
      * some index mapping calculations between local/global can be
      * optimized.
      */
+#ifdef WIN32
+    static const int default_MB = 32;
+#else
     static const int default_MB = STRUMPACK_PBLAS_BLOCKSIZE;
+#endif
     /**
      * Default columns blocksize used for 2D block cyclic
      * dustribution. This is set during CMake configuration.
      *
      * \see default_MB
      */
+#ifdef WIN32
+    static const int default_NB = 32;
+#else
     static const int default_NB = STRUMPACK_PBLAS_BLOCKSIZE;
+#endif
 
   protected:
     const BLACSGrid* grid_ = nullptr;

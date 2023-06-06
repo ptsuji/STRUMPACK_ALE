@@ -28,51 +28,6 @@
 #ifndef STRUMPACK_CONFIG_HPP
 #define STRUMPACK_CONFIG_HPP
 
-#if (PARALLEL == 1)
-#define STRUMPACK_USE_MPI
-#endif
-// #define STRUMPACK_USE_OPENMP
-
-// #define STRUMPACK_USE_CUDA
-// #define STRUMPACK_USE_HIP
-// #define STRUMPACK_HIP_PLATFORM_HCC
-// #define STRUMPACK_HIP_PLATFORM_NVCC
-// #define STRUMPACK_USE_SYCL
-
-// #define STRUMPACK_USE_BLAS64
-// #if defined(STRUMPACK_USE_BLAS64)
-// #define strumpack_blas_int long long int
-// #else
-#define strumpack_blas_int int
-// #endif
-
-// #cmakedefine STRUMPACK_USE_METIS
-#if (PARALLEL == 1)
-#define STRUMPACK_USE_PARMETIS
-#endif
-// #cmakedefine STRUMPACK_USE_SCOTCH
-// #cmakedefine STRUMPACK_USE_PTSCOTCH
-// #cmakedefine STRUMPACK_USE_PAPI
-// #cmakedefine STRUMPACK_USE_COMBBLAS
-// #cmakedefine STRUMPACK_USE_BPACK
-// #cmakedefine STRUMPACK_USE_ZFP
-// #cmakedefine STRUMPACK_USE_SLATE_SCALAPACK
-// #cmakedefine STRUMPACK_USE_GETOPT
-// #cmakedefine STRUMPACK_USE_MAGMA
-// #cmakedefine STRUMPACK_USE_MATLAB
-
-#define STRUMPACK_COUNT_FLOPS
-#define STRUMPACK_TASK_TIMERS
-#define STRUMPACK_MESSAGE_COUNTER
-
-// #cmakedefine STRUMPACK_USE_OPENMP_TASKLOOP
-// #cmakedefine STRUMPACK_USE_OPENMP_TASK_DEPEND
-
-#define STRUMPACK_PBLAS_BLOCKSIZE 32
-
-#define STRUMPACK_VERSION_MAJOR 7
-#define STRUMPACK_VERSION_MINOR 0
-#define STRUMPACK_VERSION_PATCH 1
+#include <StrumpackConfig.h>
 
 #endif // STRUMPACK_CONFIG_HPP
-
