@@ -7,3 +7,4 @@ examples/Makefile
 build-*
 Win32/strumpack/x64/*
 Win32/strumpackF/x64/*
+Win32/strumpackF/strumpackF.u2d

@@ -158,9 +158,9 @@
 				<Tool Name="VFFortranCompilerTool" ExternalNameInterpretation="extNameLowerCase" ExternalNameUnderscore="true"/></FileConfiguration>
 			<FileConfiguration Name="ParRelease|x64">
 				<Tool Name="VFFortranCompilerTool" ExternalNameInterpretation="extNameLowerCase" ExternalNameUnderscore="true"/></FileConfiguration>
-			<FileConfiguration Name="ParDebugGID64|x64">
-				<Tool Name="VFFortranCompilerTool" ExternalNameInterpretation="extNameLowerCase" ExternalNameUnderscore="true"/></FileConfiguration>
 			<FileConfiguration Name="CUDARelease|x64">
+				<Tool Name="VFFortranCompilerTool" ExternalNameInterpretation="extNameLowerCase" ExternalNameUnderscore="true"/></FileConfiguration>
+			<FileConfiguration Name="ParDebugGID64|x64">
 				<Tool Name="VFFortranCompilerTool" ExternalNameInterpretation="extNameLowerCase" ExternalNameUnderscore="true"/></FileConfiguration>
 			<FileConfiguration Name="Release|x64">
 				<Tool Name="VFFortranCompilerTool" ExternalNameInterpretation="extNameLowerCase" ExternalNameUnderscore="true"/></FileConfiguration>
@@ -174,6 +174,7 @@
 		<File RelativePath="..\..\..\scalapack\TOOLS\ccdotu.f"/>
 		<File RelativePath="..\..\src\dense\lapack\cgeqp3tol.f"/>
 		<File RelativePath="..\..\..\scalapack\TOOLS\chk1mat.f"/>
+		<File RelativePath="..\..\src\dense\lapack\clapmr.f"/>
 		<File RelativePath="..\..\..\scalapack\TOOLS\clatcpy.f"/>
 		<File RelativePath="..\..\..\scalapack\TOOLS\cmatadd.f"/>
 		<File RelativePath="..\..\..\scalapack\TOOLS\dddot.f"/>
@@ -182,6 +183,7 @@
 		<File RelativePath="..\..\..\scalapack\TOOLS\descinit.f"/>
 		<File RelativePath="..\..\..\scalapack\TOOLS\descset.f"/>
 		<File RelativePath="..\..\src\dense\lapack\dgeqp3tol.f"/>
+		<File RelativePath="..\..\src\dense\lapack\dlapmr.f"/>
 		<File RelativePath="..\..\..\scalapack\TOOLS\dlatcpy.f"/>
 		<File RelativePath="..\..\..\scalapack\TOOLS\dmatadd.f"/>
 		<File RelativePath="..\..\..\scalapack\TOOLS\dsasum.f"/>
@@ -271,11 +273,13 @@
 		<File RelativePath="..\..\src\sparse\ordering\rcm\rootls.f"/>
 		<File RelativePath="..\..\src\dense\lapack\sgeqp3tol.f"/>
 		<File RelativePath="..\..\..\scalapack\TOOLS\SL_init.f"/>
+		<File RelativePath="..\..\src\dense\lapack\slapmr.f"/>
 		<File RelativePath="..\..\..\scalapack\TOOLS\slatcpy.f"/>
 		<File RelativePath="..\..\..\scalapack\TOOLS\sltimer.f"/>
 		<File RelativePath="..\..\..\scalapack\TOOLS\smatadd.f"/>
 		<File RelativePath="..\..\..\scalapack\TOOLS\ssdot.f"/>
 		<File RelativePath="..\..\src\dense\lapack\zgeqp3tol.f"/>
+		<File RelativePath="..\..\src\dense\lapack\zlapmr.f"/>
 		<File RelativePath="..\..\..\scalapack\TOOLS\zlatcpy.f"/>
 		<File RelativePath="..\..\..\scalapack\TOOLS\zmatadd.f"/>
 		<File RelativePath="..\..\..\scalapack\TOOLS\zzdotc.f"/>
