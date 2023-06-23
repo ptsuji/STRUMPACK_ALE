@@ -55,7 +55,7 @@ C        MMDELM, MMDINT, MMDNUM, MMDUPD.
 C
 C***********************************************************************
 C
-      subroutine  genmmd ( neqns, nadj, xadj, adjncy, invp,
+      subroutine  genmmds( neqns, nadj, xadj, adjncy, invp,
      1                     perm, delta, dhead, qsize, llist,
      1                     marker, maxint, nofsub )
 c
