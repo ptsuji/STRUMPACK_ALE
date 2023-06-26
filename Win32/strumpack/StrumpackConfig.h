@@ -31,7 +31,7 @@
 #include <stdbool.h>
 
 #if (PARALLEL == 1)
-#define STRUMPACK_USE_MPI
+#define STRUMPACK_USE_MPI 1
 #endif
  /* #undef STRUMPACK_USE_OPENMP */
 
@@ -50,7 +50,7 @@
 
 /* #undef STRUMPACK_USE_METIS */
 #if (PARALLEL == 1)
-#define STRUMPACK_USE_PARMETIS
+#define STRUMPACK_USE_PARMETIS 1
 #endif
 /* #undef STRUMPACK_USE_SCOTCH */
 /* #undef STRUMPACK_USE_PTSCOTCH */
