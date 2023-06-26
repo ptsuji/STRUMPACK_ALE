@@ -4,42 +4,6 @@
 		<Platform Name="Win32"/>
 		<Platform Name="x64"/></Platforms>
 	<Configurations>
-		<Configuration Name="Debug|Win32" ConfigurationType="typeStaticLibrary">
-				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" Optimization="optimizeDisabled" WarnInterfaces="true" Traceback="true" BoundsCheck="true" StackFrameCheck="true" RuntimeLibrary="rtMultiThreadedDebugDLL"/>
-				<Tool Name="VFLibrarianTool"/>
-				<Tool Name="VFResourceCompilerTool"/>
-				<Tool Name="VFMidlTool" SuppressStartupBanner="true"/>
-				<Tool Name="VFCustomBuildTool"/>
-				<Tool Name="VFPreLinkEventTool"/>
-				<Tool Name="VFPreBuildEventTool"/>
-				<Tool Name="VFPostBuildEventTool"/></Configuration>
-		<Configuration Name="Debug|x64" UseCompiler="ifxCompiler" OutputDirectory="$(SolutionDir)$(PlatformName)\$(ConfigurationName)\" DeleteExtensionsOnClean="*.obj;*.mod;*.pdb;*.asm;*.map;*.dyn;*.dpi;*.tmp;*.log;*.lib;$(TargetPath)" BuildLogFile="$(IntDir)\$(TargetName)BuildLog.htm" ConfigurationType="typeStaticLibrary">
-				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" Optimization="optimizeDisabled" Preprocess="preprocessYes" AdditionalIncludeDirectories="C:\Program Files (x86)\Intel\oneAPI\mpi\latest\include" PreprocessorDefinitions="MMDIDXSIZE=32;AMDIDXSIZE=32;WIN32;" WarnInterfaces="true" FloatingPointExceptionHandling="fpe0" ExternalNameInterpretation="extNameLowerCase" ExternalNameUnderscore="true" Traceback="true" BoundsCheck="true" StackFrameCheck="true" RuntimeLibrary="rtMultiThreadedDebugDLL" UseMkl="mklCluster"/>
-				<Tool Name="VFLibrarianTool" OutputFile="$(OUTDIR)/strumpackF.lib"/>
-				<Tool Name="VFResourceCompilerTool"/>
-				<Tool Name="VFMidlTool" SuppressStartupBanner="true" TargetEnvironment="midlTargetAMD64"/>
-				<Tool Name="VFCustomBuildTool"/>
-				<Tool Name="VFPreLinkEventTool"/>
-				<Tool Name="VFPreBuildEventTool"/>
-				<Tool Name="VFPostBuildEventTool"/></Configuration>
-		<Configuration Name="Release|Win32" ConfigurationType="typeStaticLibrary">
-				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" RuntimeLibrary="rtMultiThreadedDLL"/>
-				<Tool Name="VFLibrarianTool"/>
-				<Tool Name="VFResourceCompilerTool"/>
-				<Tool Name="VFMidlTool" SuppressStartupBanner="true"/>
-				<Tool Name="VFCustomBuildTool"/>
-				<Tool Name="VFPreLinkEventTool"/>
-				<Tool Name="VFPreBuildEventTool"/>
-				<Tool Name="VFPostBuildEventTool"/></Configuration>
-		<Configuration Name="Release|x64" UseCompiler="ifxCompiler" OutputDirectory="$(SolutionDir)$(PlatformName)\$(ConfigurationName)\" DeleteExtensionsOnClean="*.obj;*.mod;*.pdb;*.asm;*.map;*.dyn;*.dpi;*.tmp;*.log;*.lib;$(TargetPath)" BuildLogFile="$(IntDir)\$(TargetName)BuildLog.htm" ConfigurationType="typeStaticLibrary">
-				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" Preprocess="preprocessYes" AdditionalIncludeDirectories="C:\Program Files (x86)\Intel\oneAPI\mpi\latest\include" PreprocessorDefinitions="MMDIDXSIZE=32;AMDIDXSIZE=32;WIN32;" FloatingPointExceptionHandling="fpe0" ExternalNameInterpretation="extNameLowerCase" ExternalNameUnderscore="true" RuntimeLibrary="rtMultiThreadedDLL" UseMkl="mklCluster"/>
-				<Tool Name="VFLibrarianTool" OutputFile="$(OUTDIR)/strumpackF.lib"/>
-				<Tool Name="VFResourceCompilerTool"/>
-				<Tool Name="VFMidlTool" SuppressStartupBanner="true" TargetEnvironment="midlTargetAMD64"/>
-				<Tool Name="VFCustomBuildTool"/>
-				<Tool Name="VFPreLinkEventTool"/>
-				<Tool Name="VFPreBuildEventTool"/>
-				<Tool Name="VFPostBuildEventTool"/></Configuration>
 		<Configuration Name="ParRelease|Win32" ConfigurationType="typeStaticLibrary">
 				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" RuntimeLibrary="rtMultiThreadedDLL"/>
 				<Tool Name="VFLibrarianTool"/>
@@ -161,10 +125,6 @@
 			<FileConfiguration Name="CUDARelease|x64">
 				<Tool Name="VFFortranCompilerTool" ExternalNameInterpretation="extNameLowerCase" ExternalNameUnderscore="true"/></FileConfiguration>
 			<FileConfiguration Name="ParDebugGID64|x64">
-				<Tool Name="VFFortranCompilerTool" ExternalNameInterpretation="extNameLowerCase" ExternalNameUnderscore="true"/></FileConfiguration>
-			<FileConfiguration Name="Release|x64">
-				<Tool Name="VFFortranCompilerTool" ExternalNameInterpretation="extNameLowerCase" ExternalNameUnderscore="true"/></FileConfiguration>
-			<FileConfiguration Name="Debug|x64">
 				<Tool Name="VFFortranCompilerTool" ExternalNameInterpretation="extNameLowerCase" ExternalNameUnderscore="true"/></FileConfiguration>
 			<FileConfiguration Name="ParReleaseWithDebugInfo|x64">
 				<Tool Name="VFFortranCompilerTool" ExternalNameInterpretation="extNameLowerCase" ExternalNameUnderscore="true"/></FileConfiguration>
