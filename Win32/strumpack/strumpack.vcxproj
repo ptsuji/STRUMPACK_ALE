@@ -9,6 +9,10 @@
       <Configuration>CUDARelease</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="ParDebugGID64|x64">
       <Configuration>ParDebugGID64</Configuration>
       <Platform>x64</Platform>
@@ -25,6 +29,10 @@
       <Configuration>ParRelease</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{2ef0b1be-dca9-4a3e-8476-79b6afa54a9f}</ProjectGuid>
@@ -34,6 +42,11 @@
     <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>Intel C++ Compiler 2023</PlatformToolset>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ParDebug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
@@ -45,6 +58,11 @@
     <PlatformToolset>Intel C++ Compiler 2023</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ParDebugGID64|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>Intel C++ Compiler 2023</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>Intel C++ Compiler 2023</PlatformToolset>
@@ -70,6 +88,10 @@
   <ImportGroup Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(SolutionDir)Properties\Solution.Optimization.props" />
+    <Import Project="$(SolutionDir)Properties\Solution.Language.props" />
+  </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='ParRelease|x64'">
     <Import Project="$(SolutionDir)Properties\Solution.Parallel.props" />
     <Import Project="$(SolutionDir)Properties\Solution.Optimization.props" />
@@ -82,6 +104,9 @@
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='CUDARelease|x64'" Label="PropertySheets">
     <Import Project="$(SolutionDir)Properties\Solution.Parallel.props" />
+    <Import Project="$(SolutionDir)Properties\Solution.Language.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(SolutionDir)Properties\Solution.Language.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='ParDebug|x64'">
@@ -103,6 +128,14 @@
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='ParDebug|x64'">.lib</TargetExt>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='CUDADebug|x64'">.lib</TargetExt>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='ParDebugGID64|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ParDebug|x64'">
     <ClCompile>
@@ -299,6 +332,36 @@
       <AdditionalLibraryDirectories>$(OutDir)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.;..\..\src;..\..\src\BLR;..\..\src\HODLR;..\..\src\HSS;..\..\src\clustering;..\..\src\dense;..\..\src\iterative;..\..\src\kernel;..\..\src\misc;..\..\src\sparse;..\..\src\structured;..\..\..\parmetis\metis\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>Strict</FloatingPointModel>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>strumpackF.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.;..\..\src;..\..\src\BLR;..\..\src\HODLR;..\..\src\HSS;..\..\src\clustering;..\..\src\dense;..\..\src\iterative;..\..\src\kernel;..\..\src\misc;..\..\src\sparse;..\..\src\structured;..\..\..\parmetis\metis\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <WarningLevel>Level3</WarningLevel>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>strumpackF.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\BLR\BLRExtendAdd.hpp" />
     <ClInclude Include="..\..\src\BLR\BLRMatrix.hpp" />
@@ -413,25 +476,31 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\scalapack\PBLAS\SRC\PTOOLS\PB_Ctop.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParDebugGID64|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParRelease|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='CUDARelease|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParReleaseWithDebugInfo|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='CUDADebug|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParDebug|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <ClCompile Include="..\..\..\scalapack\PBLAS\SRC\PTOOLS\PB_topget_.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParDebugGID64|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParRelease|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='CUDARelease|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParReleaseWithDebugInfo|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='CUDADebug|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParDebug|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <ClCompile Include="..\..\..\scalapack\PBLAS\SRC\PTOOLS\PB_topset_.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParDebugGID64|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParRelease|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='CUDARelease|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParReleaseWithDebugInfo|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='CUDADebug|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParDebug|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
