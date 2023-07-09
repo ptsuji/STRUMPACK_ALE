@@ -465,10 +465,10 @@ namespace strumpack {
       // like std::partition but on ind and val arrays simultaneously
       auto lo = ptr_[row];
       auto hi = ptr_[row+1];
-      auto first_ind = &ind_[lo];
-      auto last_ind = &ind_[hi];
-      auto first_val = &val_[lo];
-      auto last_val = &val_[hi];
+      auto first_ind = ind_.data() + lo;// &ind_[lo];
+      auto last_ind = ind_.data() + hi;// &ind_[hi];
+      auto first_val = val_.data() + lo;// &val_[lo];
+      auto last_val = val_.data() + hi;// &val_[hi];
       while (1) {
         while ((first_ind != last_ind) && is_diag(*first_ind)) {
           ++first_ind; ++first_val;
