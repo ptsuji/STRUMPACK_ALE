@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="CUDADebug|x64">
+      <Configuration>CUDADebug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="CUDARelease|x64">
+      <Configuration>CUDARelease</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ParDebugGID64|x64">
+      <Configuration>ParDebugGID64</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ParDebug|x64">
+      <Configuration>ParDebug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ParReleaseWithDebugInfo|x64">
+      <Configuration>ParReleaseWithDebugInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ParRelease|x64">
+      <Configuration>ParRelease</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{2ef0b1be-dca9-4a3e-8476-79b6afa54a9f}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectName>strumpack</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ParDebug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>Intel C++ Compiler 2023</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='CUDADebug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>Intel C++ Compiler 2023</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ParDebugGID64|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>Intel C++ Compiler 2023</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ParRelease|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>Intel C++ Compiler 2023</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ParReleaseWithDebugInfo|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>Intel C++ Compiler 2023</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='CUDARelease|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>Intel C++ Compiler 2023</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='ParRelease|x64'">
+    <Import Project="$(SolutionDir)Properties\Solution.Parallel.props" />
+    <Import Project="$(SolutionDir)Properties\Solution.Optimization.props" />
+    <Import Project="$(SolutionDir)Properties\Solution.Language.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ParReleaseWithDebugInfo|x64'" Label="PropertySheets">
+    <Import Project="$(SolutionDir)Properties\Solution.Parallel.props" />
+    <Import Project="$(SolutionDir)Properties\Solution.Optimization.props" />
+    <Import Project="$(SolutionDir)Properties\Solution.Language.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='CUDARelease|x64'" Label="PropertySheets">
+    <Import Project="$(SolutionDir)Properties\Solution.Parallel.props" />
+    <Import Project="$(SolutionDir)Properties\Solution.Language.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='ParDebug|x64'">
+    <Import Project="$(SolutionDir)Properties\Solution.Parallel.props" />
+    <Import Project="$(SolutionDir)Properties\Solution.Language.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='CUDADebug|x64'" Label="PropertySheets">
+    <Import Project="$(SolutionDir)Properties\Solution.Parallel.props" />
+    <Import Project="$(SolutionDir)Properties\Solution.Language.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ParDebugGID64|x64'" Label="PropertySheets">
+    <Import Project="$(SolutionDir)Properties\Solution.Parallel.props" />
+    <Import Project="$(SolutionDir)Properties\Solution.GID64.props" />
+    <Import Project="$(SolutionDir)Properties\Solution.Language.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='ParDebug|x64'">.lib</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='CUDADebug|x64'">.lib</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='ParDebugGID64|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ParDebug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;..\..\src;..\..\src\BLR;..\..\src\HODLR;..\..\src\HSS;..\..\src\clustering;..\..\src\dense;..\..\src\iterative;..\..\src\kernel;..\..\src\misc;..\..\src\sparse;..\..\src\structured;..\..\..\parmetis\include;..\..\..\parmetis\metis\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>ParDebug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;STRUMPACK_USE_MPI=1;STRUMPACK_USE_PARMETIS=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <FloatingPointModel>Strict</FloatingPointModel>
+      <UndefinePreprocessorDefinitions>
+      </UndefinePreprocessorDefinitions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.;..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>.;..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X64</AdditionalOptions>
+      <AdditionalDependencies>strumpackF.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='CUDADebug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;..\..\src;..\..\src\BLR;..\..\src\HODLR;..\..\src\HSS;..\..\src\clustering;..\..\src\dense;..\..\src\iterative;..\..\src\kernel;..\..\src\misc;..\..\src\sparse;..\..\src\structured;..\..\..\parmetis\include;..\..\..\parmetis\metis\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>CUDADebug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;STRUMPACK_USE_MPI=1;STRUMPACK_USE_PARMETIS=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <FloatingPointModel>Strict</FloatingPointModel>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.;..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>.;..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X64</AdditionalOptions>
+      <AdditionalDependencies>strumpackF.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ParDebugGID64|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;..\..\src;..\..\src\BLR;..\..\src\HODLR;..\..\src\HSS;..\..\src\clustering;..\..\src\dense;..\..\src\iterative;..\..\src\kernel;..\..\src\misc;..\..\src\sparse;..\..\src\structured;..\..\..\parmetis\include;..\..\..\parmetis\metis\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>ParDebugGID64/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;STRUMPACK_USE_MPI=1;STRUMPACK_USE_PARMETIS=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <FloatingPointModel>Strict</FloatingPointModel>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.;..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>.;..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X64</AdditionalOptions>
+      <AdditionalDependencies>strumpackF.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ParRelease|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;..\..\src;..\..\src\BLR;..\..\src\HODLR;..\..\src\HSS;..\..\src\clustering;..\..\src\dense;..\..\src\iterative;..\..\src\kernel;..\..\src\misc;..\..\src\sparse;..\..\src\structured;..\..\..\parmetis\include;..\..\..\parmetis\metis\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>ParRelease/</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;STRUMPACK_USE_MPI=1;STRUMPACK_USE_PARMETIS=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <FloatingPointModel>Strict</FloatingPointModel>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.;..\SRC%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>.;..\SRC%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X64</AdditionalOptions>
+      <AdditionalDependencies>strumpackF.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ParReleaseWithDebugInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;..\..\src;..\..\src\BLR;..\..\src\HODLR;..\..\src\HSS;..\..\src\clustering;..\..\src\dense;..\..\src\iterative;..\..\src\kernel;..\..\src\misc;..\..\src\sparse;..\..\src\structured;..\..\..\parmetis\include;..\..\..\parmetis\metis\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>ParReleaseWithDebugInfo/</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;STRUMPACK_USE_MPI=1;STRUMPACK_USE_PARMETIS=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <FloatingPointModel>Strict</FloatingPointModel>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.;..\SRC%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>.;..\SRC%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X64</AdditionalOptions>
+      <AdditionalDependencies>strumpackF.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='CUDARelease|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;..\..\src;..\..\src\BLR;..\..\src\HODLR;..\..\src\HSS;..\..\src\clustering;..\..\src\dense;..\..\src\iterative;..\..\src\kernel;..\..\src\misc;..\..\src\sparse;..\..\src\structured;..\..\..\parmetis\include;..\..\..\parmetis\metis\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>CUDARelease/</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;STRUMPACK_USE_MPI=1;STRUMPACK_USE_PARMETIS=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <FloatingPointModel>Strict</FloatingPointModel>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.;..\SRC%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>.;..\SRC%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X64</AdditionalOptions>
+      <AdditionalDependencies>strumpackF.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\BLR\BLRExtendAdd.hpp" />
+    <ClInclude Include="..\..\src\BLR\BLRMatrix.hpp" />
+    <ClInclude Include="..\..\src\BLR\BLRMatrixMPI.hpp" />
+    <ClInclude Include="..\..\src\BLR\BLROptions.hpp" />
+    <ClInclude Include="..\..\src\BLR\BLRTile.hpp" />
+    <ClInclude Include="..\..\src\BLR\BLRTileBLAS.hpp" />
+    <ClInclude Include="..\..\src\BLR\DenseTile.hpp" />
+    <ClInclude Include="..\..\src\BLR\LRTile.hpp" />
+    <ClInclude Include="..\..\src\clustering\Clustering.hpp" />
+    <ClInclude Include="..\..\src\clustering\NeighborSearch.hpp" />
+    <ClInclude Include="..\..\src\dense\ACA.hpp" />
+    <ClInclude Include="..\..\src\dense\BACA.hpp" />
+    <ClInclude Include="..\..\src\dense\BLACSGrid.hpp" />
+    <ClInclude Include="..\..\src\dense\BLASLAPACKOpenMPTask.hpp" />
+    <ClInclude Include="..\..\src\dense\BLASLAPACKWrapper.hpp" />
+    <ClInclude Include="..\..\src\dense\DenseMatrix.hpp" />
+    <ClInclude Include="..\..\src\dense\DistributedMatrix.hpp" />
+    <ClInclude Include="..\..\src\dense\DistributedVector.hpp" />
+    <ClInclude Include="..\..\src\dense\MAGMAWrapper.hpp" />
+    <ClInclude Include="..\..\src\dense\ScaLAPACKWrapper.hpp" />
+    <ClInclude Include="..\..\src\HODLR\HODLROptions.hpp" />
+    <ClInclude Include="..\..\src\HSS\BlockCyclic2BlockRow.hpp" />
+    <ClInclude Include="..\..\src\HSS\DistElemMult.hpp" />
+    <ClInclude Include="..\..\src\HSS\DistSamples.hpp" />
+    <ClInclude Include="..\..\src\HSS\HSSBasisID.hpp" />
+    <ClInclude Include="..\..\src\HSS\HSSBasisIDMPI.hpp" />
+    <ClInclude Include="..\..\src\HSS\HSSExtra.hpp" />
+    <ClInclude Include="..\..\src\HSS\HSSExtraMPI.hpp" />
+    <ClInclude Include="..\..\src\HSS\HSSMatrix.apply.hpp" />
+    <ClInclude Include="..\..\src\HSS\HSSMatrix.compress.hpp" />
+    <ClInclude Include="..\..\src\HSS\HSSMatrix.compress_kernel.hpp" />
+    <ClInclude Include="..\..\src\HSS\HSSMatrix.compress_stable.hpp" />
+    <ClInclude Include="..\..\src\HSS\HSSMatrix.extract.hpp" />
+    <ClInclude Include="..\..\src\HSS\HSSMatrix.factor.hpp" />
+    <ClInclude Include="..\..\src\HSS\HSSMatrix.hpp" />
+    <ClInclude Include="..\..\src\HSS\HSSMatrix.Schur.hpp" />
+    <ClInclude Include="..\..\src\HSS\HSSMatrix.solve.hpp" />
+    <ClInclude Include="..\..\src\HSS\HSSMatrixBase.hpp" />
+    <ClInclude Include="..\..\src\HSS\HSSMatrixMPI.apply.hpp" />
+    <ClInclude Include="..\..\src\HSS\HSSMatrixMPI.compress.hpp" />
+    <ClInclude Include="..\..\src\HSS\HSSMatrixMPI.compress_kernel.hpp" />
+    <ClInclude Include="..\..\src\HSS\HSSMatrixMPI.compress_stable.hpp" />
+    <ClInclude Include="..\..\src\HSS\HSSMatrixMPI.extract.hpp" />
+    <ClInclude Include="..\..\src\HSS\HSSMatrixMPI.extract_blocks.hpp" />
+    <ClInclude Include="..\..\src\HSS\HSSMatrixMPI.factor.hpp" />
+    <ClInclude Include="..\..\src\HSS\HSSMatrixMPI.hpp" />
+    <ClInclude Include="..\..\src\HSS\HSSMatrixMPI.Schur.hpp" />
+    <ClInclude Include="..\..\src\HSS\HSSMatrixMPI.solve.hpp" />
+    <ClInclude Include="..\..\src\HSS\HSSOptions.hpp" />
+    <ClInclude Include="..\..\src\iterative\IterativeSolvers.hpp" />
+    <ClInclude Include="..\..\src\iterative\IterativeSolversMPI.hpp" />
+    <ClInclude Include="..\..\src\kernel\Kernel.h" />
+    <ClInclude Include="..\..\src\kernel\Kernel.hpp" />
+    <ClInclude Include="..\..\src\kernel\KernelRegression.hpp" />
+    <ClInclude Include="..\..\src\kernel\Metrics.hpp" />
+    <ClInclude Include="..\..\src\misc\MPIWrapper.hpp" />
+    <ClInclude Include="..\..\src\misc\RandomWrapper.hpp" />
+    <ClInclude Include="..\..\src\misc\TaskTimer.hpp" />
+    <ClInclude Include="..\..\src\misc\Tools.hpp" />
+    <ClInclude Include="..\..\src\misc\Triplet.hpp" />
+    <ClInclude Include="..\..\src\SparseSolverBase.hpp" />
+    <ClInclude Include="..\..\src\sparse\AWPMCombBLAS.hpp" />
+    <ClInclude Include="..\..\src\sparse\CompressedSparseMatrix.hpp" />
+    <ClInclude Include="..\..\src\sparse\CSRGraph.hpp" />
+    <ClInclude Include="..\..\src\sparse\CSRMatrix.hpp" />
+    <ClInclude Include="..\..\src\sparse\CSRMatrixMPI.hpp" />
+    <ClInclude Include="..\..\src\sparse\EliminationTree.hpp" />
+    <ClInclude Include="..\..\src\sparse\EliminationTreeMPI.hpp" />
+    <ClInclude Include="..\..\src\sparse\EliminationTreeMPIDist.hpp" />
+    <ClInclude Include="..\..\src\sparse\fronts\ExtendAdd.hpp" />
+    <ClInclude Include="..\..\src\sparse\fronts\FrontalMatrix.hpp" />
+    <ClInclude Include="..\..\src\sparse\fronts\FrontalMatrixBLR.hpp" />
+    <ClInclude Include="..\..\src\sparse\fronts\FrontalMatrixBLRMPI.hpp" />
+    <ClInclude Include="..\..\src\sparse\fronts\FrontalMatrixDense.hpp" />
+    <ClInclude Include="..\..\src\sparse\fronts\FrontalMatrixDenseMPI.hpp" />
+    <ClInclude Include="..\..\src\sparse\fronts\FrontalMatrixHODLR.hpp" />
+    <ClInclude Include="..\..\src\sparse\fronts\FrontalMatrixHODLRMPI.hpp" />
+    <ClInclude Include="..\..\src\sparse\fronts\FrontalMatrixHSS.hpp" />
+    <ClInclude Include="..\..\src\sparse\fronts\FrontalMatrixHSSMPI.hpp" />
+    <ClInclude Include="..\..\src\sparse\fronts\FrontalMatrixMPI.hpp" />
+    <ClInclude Include="..\..\src\sparse\fronts\FrontFactory.hpp" />
+    <ClInclude Include="..\..\src\sparse\MC64ad.hpp" />
+    <ClInclude Include="..\..\src\sparse\mumps_symqamd.hpp" />
+    <ClInclude Include="..\..\src\sparse\ordering\ANDSparspak.hpp" />
+    <ClInclude Include="..\..\src\sparse\ordering\GeometricReordering.hpp" />
+    <ClInclude Include="..\..\src\sparse\ordering\GeometricReorderingMPI.hpp" />
+    <ClInclude Include="..\..\src\sparse\ordering\MatrixReordering.hpp" />
+    <ClInclude Include="..\..\src\sparse\ordering\MatrixReorderingMPI.hpp" />
+    <ClInclude Include="..\..\src\sparse\ordering\MetisReordering.hpp" />
+    <ClInclude Include="..\..\src\sparse\ordering\minimum_degree\AMDReordering.hpp" />
+    <ClInclude Include="..\..\src\sparse\ordering\minimum_degree\MMDReordering.hpp" />
+    <ClInclude Include="..\..\src\sparse\ordering\ParMetisReordering.hpp" />
+    <ClInclude Include="..\..\src\sparse\ordering\PTScotchReordering.hpp" />
+    <ClInclude Include="..\..\src\sparse\ordering\RCMReordering.hpp" />
+    <ClInclude Include="..\..\src\sparse\ordering\ScotchReordering.hpp" />
+    <ClInclude Include="..\..\src\sparse\PropMapSparseMatrix.hpp" />
+    <ClInclude Include="..\..\src\sparse\Redistribute.hpp" />
+    <ClInclude Include="..\..\src\sparse\SeparatorTree.hpp" />
+    <ClInclude Include="..\..\src\structured\ClusterTree.hpp" />
+    <ClInclude Include="..\..\src\structured\StructuredMatrix.h" />
+    <ClInclude Include="..\..\src\structured\StructuredMatrix.hpp" />
+    <ClInclude Include="..\..\src\structured\StructuredMatrixMPI.h" />
+    <ClInclude Include="..\..\src\structured\StructuredOptions.hpp" />
+    <ClInclude Include="..\..\src\StrumpackOptions.hpp" />
+    <ClInclude Include="..\..\src\StrumpackParameters.hpp" />
+    <ClInclude Include="..\..\src\StrumpackSparseSolver.h" />
+    <ClInclude Include="..\..\src\StrumpackSparseSolver.hpp" />
+    <ClInclude Include="..\..\src\StrumpackSparseSolverMixedPrecision.hpp" />
+    <ClInclude Include="..\..\src\StrumpackSparseSolverMixedPrecisionMPIDist.hpp" />
+    <ClInclude Include="..\..\src\StrumpackSparseSolverMPIDist.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\scalapack\PBLAS\SRC\PTOOLS\PB_Ctop.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParDebugGID64|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParRelease|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='CUDARelease|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParReleaseWithDebugInfo|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='CUDADebug|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParDebug|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\..\scalapack\PBLAS\SRC\PTOOLS\PB_topget_.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParDebugGID64|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParRelease|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='CUDARelease|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParReleaseWithDebugInfo|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='CUDADebug|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParDebug|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\..\scalapack\PBLAS\SRC\PTOOLS\PB_topset_.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParDebugGID64|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParRelease|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='CUDARelease|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParReleaseWithDebugInfo|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='CUDADebug|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ParDebug|x64'">__INTEL_LLVM_COMPILER=$(_ICCompilerMacroValue);__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\BLR\BLRExtendAdd.cpp" />
+    <ClCompile Include="..\..\src\BLR\BLRMatrix.cpp" />
+    <ClCompile Include="..\..\src\BLR\BLRMatrixMPI.cpp" />
+    <ClCompile Include="..\..\src\BLR\BLROptions.cpp" />
+    <ClCompile Include="..\..\src\BLR\DenseTile.cpp" />
+    <ClCompile Include="..\..\src\BLR\LRTile.cpp" />
+    <ClCompile Include="..\..\src\clustering\CobblePartitioning.cpp" />
+    <ClCompile Include="..\..\src\clustering\KDTree.cpp" />
+    <ClCompile Include="..\..\src\clustering\KMeans.cpp" />
+    <ClCompile Include="..\..\src\clustering\NeighborSearch.cpp" />
+    <ClCompile Include="..\..\src\clustering\PCAPartitioning.cpp" />
+    <ClCompile Include="..\..\src\dense\ACA.cpp" />
+    <ClCompile Include="..\..\src\dense\BACA.cpp" />
+    <ClCompile Include="..\..\src\dense\BLASLAPACKOpenMPTask.cpp" />
+    <ClCompile Include="..\..\src\dense\BLASLAPACKWrapper.cpp" />
+    <ClCompile Include="..\..\src\dense\DenseMatrix.cpp" />
+    <ClCompile Include="..\..\src\dense\DistributedMatrix.cpp" />
+    <ClCompile Include="..\..\src\dense\ScaLAPACKWrapper.cpp" />
+    <ClCompile Include="..\..\src\HODLR\HODLROptions.cpp" />
+    <ClCompile Include="..\..\src\HSS\HSSMatrix.cpp" />
+    <ClCompile Include="..\..\src\HSS\HSSMatrixBase.cpp" />
+    <ClCompile Include="..\..\src\HSS\HSSMatrixMPI.cpp" />
+    <ClCompile Include="..\..\src\HSS\HSSOptions.cpp" />
+    <ClCompile Include="..\..\src\iterative\BiCGStab.cpp" />
+    <ClCompile Include="..\..\src\iterative\BiCGStabMPI.cpp" />
+    <ClCompile Include="..\..\src\iterative\GMRes.cpp" />
+    <ClCompile Include="..\..\src\iterative\GMResMPI.cpp" />
+    <ClCompile Include="..\..\src\iterative\IterativeRefinement.cpp" />
+    <ClCompile Include="..\..\src\iterative\IterativeRefinementMPI.cpp" />
+    <ClCompile Include="..\..\src\kernel\Kernel.cpp" />
+    <ClCompile Include="..\..\src\misc\TaskTimer.cpp" />
+    <ClCompile Include="..\..\src\misc\Triplet.cpp" />
+    <ClCompile Include="..\..\src\SparseSolver.cpp" />
+    <ClCompile Include="..\..\src\SparseSolverBase.cpp" />
+    <ClCompile Include="..\..\src\SparseSolverMixedPrecision.cpp" />
+    <ClCompile Include="..\..\src\SparseSolverMixedPrecisionMPIDist.cpp" />
+    <ClCompile Include="..\..\src\SparseSolverMPIDist.cpp" />
+    <ClCompile Include="..\..\src\sparse\CompressedSparseMatrix.cpp" />
+    <ClCompile Include="..\..\src\sparse\CSRGraph.cpp" />
+    <ClCompile Include="..\..\src\sparse\CSRMatrix.cpp" />
+    <ClCompile Include="..\..\src\sparse\CSRMatrixMPI.cpp" />
+    <ClCompile Include="..\..\src\sparse\EliminationTree.cpp" />
+    <ClCompile Include="..\..\src\sparse\EliminationTreeMPI.cpp" />
+    <ClCompile Include="..\..\src\sparse\EliminationTreeMPIDist.cpp" />
+    <ClCompile Include="..\..\src\sparse\fronts\ExtendAdd.cpp" />
+    <ClCompile Include="..\..\src\sparse\fronts\FrontalMatrix.cpp" />
+    <ClCompile Include="..\..\src\sparse\fronts\FrontalMatrixBLR.cpp" />
+    <ClCompile Include="..\..\src\sparse\fronts\FrontalMatrixBLRMPI.cpp" />
+    <ClCompile Include="..\..\src\sparse\fronts\FrontalMatrixDense.cpp" />
+    <ClCompile Include="..\..\src\sparse\fronts\FrontalMatrixDenseMPI.cpp" />
+    <ClCompile Include="..\..\src\sparse\fronts\FrontalMatrixHODLR.cpp" />
+    <ClCompile Include="..\..\src\sparse\fronts\FrontalMatrixHODLRMPI.cpp" />
+    <ClCompile Include="..\..\src\sparse\fronts\FrontalMatrixHSS.cpp" />
+    <ClCompile Include="..\..\src\sparse\fronts\FrontalMatrixHSSMPI.cpp" />
+    <ClCompile Include="..\..\src\sparse\fronts\FrontalMatrixMPI.cpp" />
+    <ClCompile Include="..\..\src\sparse\fronts\FrontFactory.cpp" />
+    <ClCompile Include="..\..\src\sparse\MC64ad.cpp" />
+    <ClCompile Include="..\..\src\sparse\ordering\ANDSparspak.cpp" />
+    <ClCompile Include="..\..\src\sparse\ordering\GeometricReordering.cpp" />
+    <ClCompile Include="..\..\src\sparse\ordering\GeometricReorderingMPI.cpp" />
+    <ClCompile Include="..\..\src\sparse\ordering\MatrixReordering.cpp" />
+    <ClCompile Include="..\..\src\sparse\ordering\MatrixReorderingMPI.cpp" />
+    <ClCompile Include="..\..\src\sparse\PropMapSparseMatrix.cpp" />
+    <ClCompile Include="..\..\src\sparse\SeparatorTree.cpp" />
+    <ClCompile Include="..\..\src\structured\StructuredMatrix.cpp" />
+    <ClCompile Include="..\..\src\structured\StructuredMatrixC.cpp" />
+    <ClCompile Include="..\..\src\structured\StructuredOptions.cpp" />
+    <ClCompile Include="..\..\src\StrumpackOptions.cpp" />
+    <ClCompile Include="..\..\src\StrumpackParameters.cpp" />
+    <ClCompile Include="..\..\src\StrumpackSparseSolverC.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

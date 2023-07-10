@@ -69,6 +69,8 @@ namespace strumpack {
   template<> inline MPI_Datatype mpi_type<long>() { return MPI_LONG; }
   /** return MPI datatype for C++ unsigned long */
   template<> inline MPI_Datatype mpi_type<unsigned long>() { return MPI_UNSIGNED_LONG; }
+  /** return MPI datatype for C++ unsigned long */
+  template<> inline MPI_Datatype mpi_type<unsigned long long>() { return MPI_UNSIGNED_LONG_LONG; }
   /** return MPI datatype for C++ long long int */
   template<> inline MPI_Datatype mpi_type<long long int>() { return MPI_LONG_LONG_INT; }
   /** return MPI datatype for C++ float */

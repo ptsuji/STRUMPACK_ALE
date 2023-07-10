@@ -70,7 +70,7 @@ c                nodes.
 c
         delta  = 0
         maxint = 2 000 000 000
-        call genmmd  (  neqns , nadj  , xadj  , adjncy, invp  ,
+        call genmmds (  neqns , nadj  , xadj  , adjncy, invp  ,
      1                  perm  , delta , 
      1                  iwork(1)              ,
      1                  iwork(neqns+1)        ,

@@ -176,65 +176,65 @@ namespace strumpack {
     // implement outside of this class
     void extract_separator
     (integer_t, const std::vector<std::size_t>&,
-     const std::vector<std::size_t>&, DenseM_t&, int) const override {}
+     const std::vector<std::size_t>&, DenseM_t&, int) const {}
     void extract_separator_2d
     (integer_t, const std::vector<std::size_t>&,
-     const std::vector<std::size_t>&, DistM_t&) const override {}
+     const std::vector<std::size_t>&, DistM_t&) const {}
     void extract_front
     (DenseM_t&, DenseM_t&, DenseM_t&, integer_t,
-     integer_t, const std::vector<integer_t>&, int) const override {}
+     integer_t, const std::vector<integer_t>&, int) const {}
     void push_front_elements
     (integer_t, integer_t, const std::vector<integer_t>&,
      std::vector<Triplet<scalar_t>>&, std::vector<Triplet<scalar_t>>&,
-     std::vector<Triplet<scalar_t>>&) const override {}
+     std::vector<Triplet<scalar_t>>&) const {}
     void set_front_elements
     (integer_t, integer_t, const std::vector<integer_t>&,
      Triplet<scalar_t>*, Triplet<scalar_t>*,
-     Triplet<scalar_t>*) const override {}
+     Triplet<scalar_t>*) const {}
     void count_front_elements
     (integer_t, integer_t, const std::vector<integer_t>&,
-     std::size_t&, std::size_t&, std::size_t&) const override {}
+     std::size_t&, std::size_t&, std::size_t&) const {}
 
     void extract_F11_block
     (scalar_t*, integer_t, integer_t, integer_t,
-     integer_t, integer_t) const override {}
+     integer_t, integer_t) const {}
     void extract_F12_block
     (scalar_t*, integer_t, integer_t, integer_t, integer_t,
-     integer_t, const integer_t*) const override {}
+     integer_t, const integer_t*) const {}
     void extract_F21_block
     (scalar_t*, integer_t, integer_t, integer_t, integer_t,
-     integer_t, const integer_t*) const override {}
+     integer_t, const integer_t*) const {}
     void front_multiply
     (integer_t, integer_t, const std::vector<integer_t>&,
-     const DenseM_t&, DenseM_t&, DenseM_t&, int depth) const override {}
+     const DenseM_t&, DenseM_t&, DenseM_t&, int depth) const {}
     void front_multiply_2d
     (integer_t, integer_t, const std::vector<integer_t>&, const DistM_t&,
-     DistM_t&, DistM_t&, int) const override {}
+     DistM_t&, DistM_t&, int) const {}
     void front_multiply_2d
     (Trans op, integer_t, integer_t, const std::vector<integer_t>&,
-     const DistM_t&, DistM_t&, int) const override {}
+     const DistM_t&, DistM_t&, int) const {}
 
     CSRGraph<integer_t> extract_graph_sep_CB
     (int ordering_level, integer_t lo, integer_t hi,
-     const std::vector<integer_t>& upd) const override {
+     const std::vector<integer_t>& upd) const {
       return CSRGraph<integer_t>(); };
     CSRGraph<integer_t> extract_graph_CB_sep
     (int ordering_level, integer_t lo, integer_t hi,
-     const std::vector<integer_t>& upd) const override {
+     const std::vector<integer_t>& upd) const {
       return CSRGraph<integer_t>(); };
     CSRGraph<integer_t> extract_graph_CB
-    (int ordering_level, const std::vector<integer_t>& upd) const override {
+    (int ordering_level, const std::vector<integer_t>& upd) const {
       return CSRGraph<integer_t>(); };
 
     void front_multiply_F11
     (Trans op, integer_t slo, integer_t shi,
-     const DenseM_t& R, DenseM_t& S, int depth) const override {};
+     const DenseM_t& R, DenseM_t& S, int depth) const {};
     void front_multiply_F12
     (Trans op, integer_t slo, integer_t shi, const std::vector<integer_t>& upd,
-     const DenseM_t& R, DenseM_t& S, int depth) const override {};
+     const DenseM_t& R, DenseM_t& S, int depth) const {};
     void front_multiply_F21
     (Trans op, integer_t slo, integer_t shi, const std::vector<integer_t>& upd,
-     const DenseM_t& R, DenseM_t& S, int depth) const override {};
+     const DenseM_t& R, DenseM_t& S, int depth) const {};
 #endif //DOXYGEN_SHOULD_SKIP_THIS
 
   protected:

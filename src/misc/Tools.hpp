@@ -49,21 +49,26 @@ namespace strumpack {
     return true;
   }
 
+#if defined(WIN32) && defined(_DEBUG)
+  template<typename T> 
+     using NoInit = std::allocator<T>;
+#else
   template<typename T> class NoInit {
   public:
-    using value_type = T;
+     using value_type = T;
     value_type* allocate(std::size_t n)
     { return static_cast<value_type*>(::operator new(n*sizeof(value_type))); }
     void deallocate(T* p, std::size_t) noexcept { ::operator delete(p); }
     //template <class U, class ...Args> void construct(U* /*p*/) { }
     template <class U, class ...Args> void construct(U* p, Args&& ...args) {
-      ::new(p) U(std::forward<Args>(args)...);
+       ::new(p) U(std::forward<Args>(args)...);
     }
   };
   template <class T, class U> bool operator==
   (const NoInit<T>&, const NoInit<U>&) { return true; }
   template <class T, class U> bool operator!=
   (const NoInit<T>&, const NoInit<U>&) { return false; }
+#endif
 
 
   template<typename scalar_t> class VectorPool {

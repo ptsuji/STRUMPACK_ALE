@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VisualStudioProject ProjectType="typeStaticLibrary" ProjectCreator="Intel Fortran" Keyword="Static Library" Version="11.0" ProjectIdGuid="{6A38B408-72B0-4A28-94AC-B491B359BD0C}">
+	<Platforms>
+		<Platform Name="Win32"/>
+		<Platform Name="x64"/></Platforms>
+	<Configurations>
+		<Configuration Name="ParRelease|Win32" ConfigurationType="typeStaticLibrary">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" RuntimeLibrary="rtMultiThreadedDLL"/>
+				<Tool Name="VFLibrarianTool"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/></Configuration>
+		<Configuration Name="ParRelease|x64" UseCompiler="ifxCompiler" OutputDirectory="$(SolutionDir)$(PlatformName)\$(ConfigurationName)\" DeleteExtensionsOnClean="*.obj;*.mod;*.pdb;*.asm;*.map;*.dyn;*.dpi;*.tmp;*.log;*.lib;$(TargetPath)" BuildLogFile="$(IntDir)\$(TargetName)BuildLog.htm" ConfigurationType="typeStaticLibrary">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" Preprocess="preprocessYes" AdditionalIncludeDirectories="C:\Program Files (x86)\Intel\oneAPI\mpi\latest\include" PreprocessorDefinitions="MMDIDXSIZE=32;AMDIDXSIZE=32;WIN32;" FloatingPointExceptionHandling="fpe0" ExternalNameInterpretation="extNameLowerCase" ExternalNameUnderscore="true" RuntimeLibrary="rtMultiThreadedDLL" UseMkl="mklCluster"/>
+				<Tool Name="VFLibrarianTool" OutputFile="$(OUTDIR)/strumpackF.lib"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true" TargetEnvironment="midlTargetAMD64"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/></Configuration>
+		<Configuration Name="ParDebug|Win32" ConfigurationType="typeStaticLibrary">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" Optimization="optimizeDisabled" WarnInterfaces="true" Traceback="true" BoundsCheck="true" StackFrameCheck="true" RuntimeLibrary="rtMultiThreadedDebugDLL"/>
+				<Tool Name="VFLibrarianTool"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/></Configuration>
+		<Configuration Name="ParDebug|x64" UseCompiler="ifxCompiler" OutputDirectory="$(SolutionDir)$(PlatformName)\$(ConfigurationName)\" DeleteExtensionsOnClean="*.obj;*.mod;*.pdb;*.asm;*.map;*.dyn;*.dpi;*.tmp;*.log;*.lib;$(TargetPath)" BuildLogFile="$(IntDir)\$(TargetName)BuildLog.htm" ConfigurationType="typeStaticLibrary">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" Optimization="optimizeDisabled" Preprocess="preprocessYes" AdditionalIncludeDirectories="C:\Program Files (x86)\Intel\oneAPI\mpi\latest\include" PreprocessorDefinitions="MMDIDXSIZE=32;AMDIDXSIZE=32;WIN32;" WarnInterfaces="true" FloatingPointExceptionHandling="fpe0" ExternalNameInterpretation="extNameLowerCase" ExternalNameUnderscore="true" Traceback="true" BoundsCheck="true" StackFrameCheck="true" RuntimeLibrary="rtMultiThreadedDebugDLL" UseMkl="mklCluster"/>
+				<Tool Name="VFLibrarianTool" OutputFile="$(OUTDIR)/strumpackF.lib"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true" TargetEnvironment="midlTargetAMD64"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/></Configuration>
+		<Configuration Name="ParDebugGID64|Win32" ConfigurationType="typeStaticLibrary">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" Optimization="optimizeDisabled" WarnInterfaces="true" Traceback="true" BoundsCheck="true" StackFrameCheck="true" RuntimeLibrary="rtMultiThreadedDebugDLL"/>
+				<Tool Name="VFLibrarianTool"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/></Configuration>
+		<Configuration Name="ParDebugGID64|x64" UseCompiler="ifxCompiler" OutputDirectory="$(SolutionDir)$(PlatformName)\$(ConfigurationName)\" DeleteExtensionsOnClean="*.obj;*.mod;*.pdb;*.asm;*.map;*.dyn;*.dpi;*.tmp;*.log;*.lib;$(TargetPath)" BuildLogFile="$(IntDir)\$(TargetName)BuildLog.htm" ConfigurationType="typeStaticLibrary">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" Optimization="optimizeDisabled" Preprocess="preprocessYes" AdditionalIncludeDirectories="C:\Program Files (x86)\Intel\oneAPI\mpi\latest\include" PreprocessorDefinitions="MMDIDXSIZE=32;AMDIDXSIZE=32;WIN32;" WarnInterfaces="true" FloatingPointExceptionHandling="fpe0" ExternalNameInterpretation="extNameLowerCase" ExternalNameUnderscore="true" Traceback="true" BoundsCheck="true" StackFrameCheck="true" RuntimeLibrary="rtMultiThreadedDebugDLL" UseMkl="mklCluster"/>
+				<Tool Name="VFLibrarianTool" OutputFile="$(OUTDIR)/strumpackF.lib"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true" TargetEnvironment="midlTargetAMD64"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/></Configuration>
+		<Configuration Name="ParReleaseWithDebugInfo|Win32" ConfigurationType="typeStaticLibrary">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" RuntimeLibrary="rtMultiThreadedDLL"/>
+				<Tool Name="VFLibrarianTool"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/></Configuration>
+		<Configuration Name="ParReleaseWithDebugInfo|x64" UseCompiler="ifxCompiler" OutputDirectory="$(SolutionDir)$(PlatformName)\$(ConfigurationName)\" DeleteExtensionsOnClean="*.obj;*.mod;*.pdb;*.asm;*.map;*.dyn;*.dpi;*.tmp;*.log;*.lib;$(TargetPath)" BuildLogFile="$(IntDir)\$(TargetName)BuildLog.htm" ConfigurationType="typeStaticLibrary">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" Preprocess="preprocessYes" AdditionalIncludeDirectories="C:\Program Files (x86)\Intel\oneAPI\mpi\latest\include" PreprocessorDefinitions="MMDIDXSIZE=32;AMDIDXSIZE=32;WIN32;" FloatingPointExceptionHandling="fpe0" ExternalNameInterpretation="extNameLowerCase" ExternalNameUnderscore="true" RuntimeLibrary="rtMultiThreadedDLL" UseMkl="mklCluster"/>
+				<Tool Name="VFLibrarianTool" OutputFile="$(OUTDIR)/strumpackF.lib"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true" TargetEnvironment="midlTargetAMD64"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/></Configuration></Configurations>
+	<Files>
+		<Filter Name="Header Files" Filter="fi;fd"/>
+		<Filter Name="Resource Files" Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"/>
+		<Filter Name="Source Files" Filter="f90;for;f;fpp;ftn;def;odl;idl">
+		<File RelativePath="..\..\src\sparse\ordering\minimum_degree\amdbar.F"/>
+		<File RelativePath="..\..\src\sparse\MUMPS\ana_orderings.F">
+			<FileConfiguration Name="ParDebug|x64">
+				<Tool Name="VFFortranCompilerTool" ExternalNameInterpretation="extNameLowerCase" ExternalNameUnderscore="true"/></FileConfiguration>
+			<FileConfiguration Name="ParRelease|x64">
+				<Tool Name="VFFortranCompilerTool" ExternalNameInterpretation="extNameLowerCase" ExternalNameUnderscore="true"/></FileConfiguration>
+			<FileConfiguration Name="ParDebugGID64|x64">
+				<Tool Name="VFFortranCompilerTool" ExternalNameInterpretation="extNameLowerCase" ExternalNameUnderscore="true"/></FileConfiguration>
+			<FileConfiguration Name="ParReleaseWithDebugInfo|x64">
+				<Tool Name="VFFortranCompilerTool" ExternalNameInterpretation="extNameLowerCase" ExternalNameUnderscore="true"/></FileConfiguration></File>
+		<File RelativePath="..\..\..\scalapack\TOOLS\ccdotc.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\ccdotu.f"/>
+		<File RelativePath="..\..\src\dense\lapack\cgeqp3tol.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\chk1mat.f"/>
+		<File RelativePath="..\..\src\dense\lapack\clapmr.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\clatcpy.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\cmatadd.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\dddot.f"/>
+		<File RelativePath="..\..\src\sparse\ordering\rcm\degree.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\desc_convert.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\descinit.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\descset.f"/>
+		<File RelativePath="..\..\src\dense\lapack\dgeqp3tol.f"/>
+		<File RelativePath="..\..\src\dense\lapack\dlapmr.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\dlatcpy.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\dmatadd.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\dsasum.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\dscasum.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\dscnrm2.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\dsnrm2.f"/>
+		<File RelativePath="..\..\src\sparse\ordering\rcm\fnroot.f"/>
+		<File RelativePath="..\..\src\sparse\ordering\minimum_degree\genmmd.F"/>
+		<File RelativePath="..\..\src\sparse\ordering\rcm\genrcm.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\iceil.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\ilacpy.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\ilcm.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\indxg2p.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\indxl2g.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\infog1l.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\infog2l.f"/>
+		<File RelativePath="..\..\src\sparse\ordering\minimum_degree\mmdelm.F"/>
+		<File RelativePath="..\..\src\sparse\ordering\minimum_degree\mmdint.F"/>
+		<File RelativePath="..\..\src\sparse\ordering\minimum_degree\mmdnum.F"/>
+		<File RelativePath="..\..\src\sparse\ordering\minimum_degree\mmdupd.F"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\npreroc.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\numroc.f"/>
+		<File RelativePath="..\..\src\sparse\ordering\minimum_degree\ordmmd.F"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pcchekpad.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pccol2row.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pcelget.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pcelset.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pcelset2.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pcfillpad.f"/>
+		<File RelativePath="..\..\src\dense\lapack\pcgeqpftol.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pchkxmat.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pclaprnt.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pclaread.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pclawrite.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pcmatadd.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pcrow2col.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pctreecomb.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pdchekpad.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pdcol2row.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pdelget.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pdelset.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pdelset2.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pdfillpad.f"/>
+		<File RelativePath="..\..\src\dense\lapack\pdgeqpftol.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pdlaprnt.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pdlaread.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pdlawrite.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pdmatadd.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pdrow2col.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pdtreecomb.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pichekpad.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\picol2row.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pielget.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pielset.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pielset2.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pifillpad.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pilaprnt.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pirow2col.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pitreecomb.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pschekpad.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pscol2row.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pselget.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pselset.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pselset2.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\psfillpad.f"/>
+		<File RelativePath="..\..\src\dense\lapack\psgeqpftol.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pslaprnt.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pslaread.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pslawrite.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\psmatadd.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\psrow2col.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pstreecomb.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pzchekpad.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pzcol2row.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pzelget.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pzelset.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pzelset2.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pzfillpad.f"/>
+		<File RelativePath="..\..\src\dense\lapack\pzgeqpftol.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pzlaprnt.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pzlaread.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pzlawrite.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pzmatadd.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pzrow2col.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\pztreecomb.f"/>
+		<File RelativePath="..\..\src\sparse\ordering\rcm\rcm.f"/>
+		<File RelativePath="..\..\src\sparse\ordering\rcm\rootls.f"/>
+		<File RelativePath="..\..\src\dense\lapack\sgeqp3tol.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\SL_init.f"/>
+		<File RelativePath="..\..\src\dense\lapack\slapmr.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\slatcpy.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\sltimer.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\smatadd.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\ssdot.f"/>
+		<File RelativePath="..\..\src\dense\lapack\zgeqp3tol.f"/>
+		<File RelativePath="..\..\src\dense\lapack\zlapmr.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\zlatcpy.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\zmatadd.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\zzdotc.f"/>
+		<File RelativePath="..\..\..\scalapack\TOOLS\zzdotu.f"/></Filter></Files>
+	<Globals/></VisualStudioProject>
